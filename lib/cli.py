@@ -2,7 +2,7 @@
 
 from helpers import (
     exit_program,
-    helper_1
+    helper_1,
 )
 
 
