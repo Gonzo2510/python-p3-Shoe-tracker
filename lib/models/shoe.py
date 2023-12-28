@@ -9,3 +9,8 @@ class Shoe:
         self.brand = brand
         self.size = size
         self.type = type
+
+    def __repr__(self) -> str:
+        return(
+            f"Shoe {self.id}: {self.brand}, {self.type}"
+        )
