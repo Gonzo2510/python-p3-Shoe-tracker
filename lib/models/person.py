@@ -24,3 +24,23 @@ class Person:
             raise ValueError(
                 "Name must be a non-empty string"
             )
+        
+    @classmethod
+    def create_table(cls):
+        """ Create a new table to persist the attributes of Person instances """
+        sql = """
+            CREATE TABLE IF NOT EXISTS persons (
+            id INTEGER PRIMARY KEY,
+            name TEXT)
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+
+    @classmethod
+    def drop_table(cls):
+        """ Drop the table that persists Person instances """
+        sql = """
+            DROP TABLE IF EXISTS persons;
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
