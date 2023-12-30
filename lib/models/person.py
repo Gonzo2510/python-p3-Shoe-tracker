@@ -44,3 +44,18 @@ class Person:
         """
         CURSOR.execute(sql)
         CONN.commit()
+
+    def save(self):
+        """ Insert a new row with the name value of the current Person instance.
+        Update object id attribute using the primary key value of new row.
+        Save the object in local dictionary using table row's PK as dictionary key"""
+        sql = """
+            INSERT INTO departments (name)
+            VALUES (?)
+        """
+
+        CURSOR.execute(sql, (self.name))
+        CONN.commit()
+
+        self.id = CURSOR.lastrowid
+        type(self).all[self.id] = self
