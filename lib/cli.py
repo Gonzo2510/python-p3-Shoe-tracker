@@ -24,23 +24,23 @@ def main():
         elif choice == "1":
             helper_1()
         elif choice == "2":
-            pass
+            create_person()
         elif choice == "3":
-            pass
+            update_person()
         elif choice == "4":
-            pass
+            delete_person()
         elif choice == "5":
-            pass
+            list_persons()
         elif choice == "6":
-            pass
+            find_person_by_id()
         elif choice == "7":
-            pass
+            create_shoe()
         elif choice == "8":
-            pass
+            update_shoe()
         elif choice == "9":
-            pass
+            delete_shoe()
         elif choice == "10":
-            pass
+            list_shoes()
         elif choice == "11":
             pass
         elif choice == "12":

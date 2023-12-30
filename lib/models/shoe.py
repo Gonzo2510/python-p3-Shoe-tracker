@@ -2,7 +2,7 @@ from models.__init__ import CURSOR, CONN
 
 
 class Shoe:
-    all ={}
+    all = {}
 
     shoe_brands = [
     "Adidas",
