@@ -49,7 +49,7 @@ def menu():
     print("2. Update person")
     print("3. Delete person")
     print("4. List persons")
-    print("5. Finder person by id")
+    print("5. Find person by id")
     print("6. Create shoe")
     print("7. Update shoe")
     print("8. Delete shoe")
