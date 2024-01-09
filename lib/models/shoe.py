@@ -68,3 +68,18 @@ class Shoe:
         """
         CURSOR.execute(sql, (self.name))
         CONN.commit()
+
+    def update(self):
+        pass
+
+    def delete(self):
+        pass
+
+
+    @classmethod
+    def create():
+        pass
+
+    @classmethod
+    def get_all(cls):
+        pass
