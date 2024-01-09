@@ -1,3 +1,6 @@
+from models.person import Person
+from models.shoe import Shoe
+
 # lib/helpers.py
 
 def helper_1():
