@@ -81,5 +81,9 @@ class Shoe:
         pass
 
     @classmethod
+    def instance_from_db():
+        pass
+
+    @classmethod
     def get_all(cls):
         pass
