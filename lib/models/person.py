@@ -53,9 +53,42 @@ class Person:
             INSERT INTO departments (name)
             VALUES (?)
         """
-
         CURSOR.execute(sql, (self.name))
         CONN.commit()
 
-        # self.id = CURSOR.lastrowid
-        # type(self).all[self.id] = self
+        self.id = CURSOR.lastrowid
+        type(self).all[self.id] = self
+
+
+    @classmethod
+    def create(cls, name):
+        person = cls(name)
+        person.save()
+        return person
+    
+    def update(self):
+        sql = """
+            UPDATE persons
+            SET name = ?
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.name, self.id))
+        CONN.commit()
+
+    def delete(self):
+        sql = """
+            DELETE FROM persons
+            WHERE id = ?
+        """
+        CURSOR.execute(sql, (self.name, self.id))
+        CONN.commit()
+    
+        del type(self).all[self.id]
+
+        self.id = None
+
+    def list_persons():
+        pass
+
+    def find_person_by_id():
+        pass
