@@ -40,3 +40,31 @@ class Shoe:
             raise ValueError(
                 f"Name must be one of the following: {Shoe.shoe_brands}"
             )
+        
+    @classmethod
+    def create_table(cls):
+        sql = """
+            CREATE TABLE IF NOT EXISTS shoes (
+            id INTEGER PRIMARY KEY,
+            brand TEXT
+            size INTEGER
+            type TEXT)
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+    
+    @classmethod
+    def drop_table(cls):
+        sql = """
+            DROP TABLE IF EXISTS shoes;
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+
+    def save(self):
+        sql = """
+            INSERT INTO departments (name)
+            VALUES (?)
+        """
+        CURSOR.execute(sql, (self.name))
+        CONN.commit()
