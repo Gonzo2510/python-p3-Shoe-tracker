@@ -87,8 +87,8 @@ class Person:
 
         self.id = None
 
-    def list_persons():
+    def instance_from_db():
         pass
 
-    def find_person_by_id():
+    def get_all():
         pass
