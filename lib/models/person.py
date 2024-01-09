@@ -57,5 +57,5 @@ class Person:
         CURSOR.execute(sql, (self.name))
         CONN.commit()
 
-        self.id = CURSOR.lastrowid
-        type(self).all[self.id] = self
+        # self.id = CURSOR.lastrowid
+        # type(self).all[self.id] = self
