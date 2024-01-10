@@ -47,8 +47,9 @@ def list_persons():
         print(person) 
 
 def find_person_by_id():
-    pass
-
+    id_ = input("Enter the person's id: ")
+    person = Person.find_by_id(id_)
+    print(person) if person else print(f'Person {id_} not found')
 
 def create_shoe():
     pass
