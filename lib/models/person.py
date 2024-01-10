@@ -87,8 +87,16 @@ class Person:
 
         self.id = None
 
-    def instance_from_db():
-        pass
+    @classmethod
+    def instance_from_db(cls, row):
+        person = cls.all.get(row[0])
+        if person:
+            person.name = row[1]
+        else:
+            person = cls(row[1])
+            person.id = row[0]
+            cls.all[person.id] = person
+        return person
 
     def get_all():
         pass
