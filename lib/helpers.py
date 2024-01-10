@@ -42,7 +42,9 @@ def delete_person():
         print(f'Person {id_} not found')
 
 def list_persons():
-    pass
+    persons = Person.get_all()
+    for person in persons:
+        print(person) 
 
 def find_person_by_id():
     pass
