@@ -34,7 +34,12 @@ def update_person():
         print(f'Department {id_} not found')
 
 def delete_person():
-    pass
+    id_ = input("Enter the person's id: ")
+    if person := Person.find_by_id(id_):
+        person.delete()
+        print(f'Person {id_} deleted')
+    else:
+        print(f'Person {id_} not found')
 
 def list_persons():
     pass
