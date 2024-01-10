@@ -20,7 +20,18 @@ def create_person():
         print("Error creating person: ", exc)
         
 def update_person():
-    pass
+    id_ = input("Enter the person's id: ")
+    if person := Person.find_by_id(id_):
+        try:
+            name = input("Enter person's new name: ")
+            person.name = name
+
+            person.update()
+            print(f'Success: {person}')
+        except Exception as exc:
+            print("Error updating department: ", exc)
+    else:
+        print(f'Department {id_} not found')
 
 def delete_person():
     pass
