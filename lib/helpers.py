@@ -12,8 +12,13 @@ def exit_program():
     exit()
 
 def create_person():
-    pass
-
+    name = input("Enter person name: ")
+    try:
+        person = Person.create(name)
+        print(f'Success: {person}')
+    except Exception as exc:
+        print("Error creating person: ", exc)
+        
 def update_person():
     pass
 
