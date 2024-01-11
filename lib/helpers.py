@@ -87,4 +87,6 @@ def delete_shoe():
         print(f'Shoe {id_} not found')
 
 def list_shoes():
-    pass
+    shoes = Shoe.get_all()
+    for shoe in shoes:
+        print(shoe) 
