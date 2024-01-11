@@ -52,7 +52,15 @@ def find_person_by_id():
     print(person) if person else print(f'Person {id_} not found')
 
 def create_shoe():
-    pass
+    brand = input("Enter the shoe brand: ")
+    size = input("Enter the shoe size: ")
+    type = input("Enter the shoe type: ")
+    try:
+        size = int(size)
+        shoe = Shoe.create(brand, size, type)
+        print(f'Success: {shoe}')
+    except Exception as exc:
+        print("Error creating shoe: ", exc)
 
 def update_shoe():
     pass
