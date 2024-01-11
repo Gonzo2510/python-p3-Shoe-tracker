@@ -87,3 +87,11 @@ def list_shoes():
     shoes = Shoe.get_all()
     for shoe in shoes:
         print(shoe) 
+
+
+def create_clear_database():
+    Shoe.drop_table()
+    Person.drop_table()
+    Person.create_table()
+    Shoe.create_table()
+    print("Database cleared")

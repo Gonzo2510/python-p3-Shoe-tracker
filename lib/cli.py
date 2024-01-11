@@ -10,7 +10,8 @@ from helpers import (
     create_shoe,
     update_shoe,
     delete_shoe,
-    list_shoes
+    list_shoes,
+    create_clear_database
 )
 
 
@@ -38,6 +39,10 @@ def main():
             delete_shoe()
         elif choice == "9":
             list_shoes()
+        elif choice == "10":
+            pass
+        elif choice == "11":
+            create_clear_database()
         else:
             print("Invalid choice")
 
@@ -54,7 +59,8 @@ def menu():
     print("7. Update shoe")
     print("8. Delete shoe")
     print("9. List shoes")
-    # print("10. List shoes by person id")
+    print("10. List shoes by person id")
+    print("11. Create/clear database")
 
 
 if __name__ == "__main__":
