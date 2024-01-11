@@ -63,7 +63,7 @@ class Shoe:
 
     def save(self):
         sql = """
-            INSERT INTO departments (name)
+            INSERT INTO shoes (name)
             VALUES (?)
         """
         CURSOR.execute(sql, (self.name))

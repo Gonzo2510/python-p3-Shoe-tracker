@@ -50,7 +50,7 @@ class Person:
         Update object id attribute using the primary key value of new row.
         Save the object in local dictionary using table row's PK as dictionary key"""
         sql = """
-            INSERT INTO departments (name)
+            INSERT INTO persons (name)
             VALUES (?)
         """
         CURSOR.execute(sql, (self.name))

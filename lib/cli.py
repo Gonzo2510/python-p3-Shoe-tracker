@@ -54,7 +54,7 @@ def menu():
     print("7. Update shoe")
     print("8. Delete shoe")
     print("9. List shoes")
-
+    # print("10. List shoes by person id")
 
 
 if __name__ == "__main__":
