@@ -63,7 +63,20 @@ def create_shoe():
         print("Error creating shoe: ", exc)
 
 def update_shoe():
-    pass
+    id_ = input("Enter the shoe's id: ")
+    if shoe := Shoe.find_by_id(id_):
+        try:
+            brand = input("Enter the shoe brand: ")
+            shoe.brand = brand
+            size = input("Enter the shoe size: ")
+            shoe.size = int(size)
+            type = input("Enter the shoe type: ")
+            shoe.type = type
+
+            shoe.update()
+            print(f'Success: {shoe}')
+        except Exception as exc:
+            print("Error updating shoe: ", exc)
 
 def delete_shoe():
     pass
