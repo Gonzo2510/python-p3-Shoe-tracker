@@ -79,7 +79,12 @@ def update_shoe():
             print("Error updating shoe: ", exc)
 
 def delete_shoe():
-    pass
+    id_ = input("Enter the shoe's id: ")
+    if shoe := Shoe.find_by_id(id_):
+        shoe.delete()
+        print(f'Shoe {id_} deleted')
+    else:
+        print(f'Shoe {id_} not found')
 
 def list_shoes():
     pass
