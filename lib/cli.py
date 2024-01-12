@@ -11,7 +11,8 @@ from helpers import (
     update_shoe,
     delete_shoe,
     list_shoes,
-    create_clear_database
+    create_clear_database,
+    seed_database
 )
 
 
@@ -43,6 +44,8 @@ def main():
             pass
         elif choice == "11":
             create_clear_database()
+        elif choice == "12":
+            seed_database()
         else:
             print("Invalid choice")
 
@@ -64,6 +67,7 @@ def menu():
     print("9. List shoes")
     print("10. List shoes by person id")
     print("11. Create/clear database")
+    print("11. Seed database")
 
 
 if __name__ == "__main__":

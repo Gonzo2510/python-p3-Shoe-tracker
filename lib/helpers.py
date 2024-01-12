@@ -94,3 +94,10 @@ def create_clear_database():
     Person.create_table()
     Shoe.create_table()
     print("Database cleared")
+
+def seed_database():
+    Person.create("Jacob")
+    Person.create("Isabel")
+    Person.create("Aaron")
+    Person.create("Joe")
+    print("Database seeded")
