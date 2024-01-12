@@ -22,7 +22,8 @@ def update_person():
         try:
             name = input("Enter person's new name: ")
             person.name = name
-
+            new_id = input("Enter person's new id: ")
+            person.id = new_id
             person.update()
             print(f'Success: {person}')
         except Exception as exc:

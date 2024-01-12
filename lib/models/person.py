@@ -50,10 +50,12 @@ class Person:
         Update object id attribute using the primary key value of new row.
         Save the object in local dictionary using table row's PK as dictionary key"""
         sql = """
-            INSERT INTO persons (name)
-            VALUES (?)
+            INSERT INTO persons (
+                name
+                id)
+            VALUES (?, ?)
         """
-        CURSOR.execute(sql, (self.name,))
+        CURSOR.execute(sql, (self.name, self.id))
         CONN.commit()
         self.id = CURSOR.lastrowid
         # type(self).all[self.id] = self
