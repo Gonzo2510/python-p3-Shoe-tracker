@@ -66,7 +66,7 @@ class Shoe:
             INSERT INTO shoes (name)
             VALUES (?)
         """
-        CURSOR.execute(sql, (self.name))
+        CURSOR.execute(sql, (self.name, ))
         CONN.commit()
 
     def update(self):

@@ -53,11 +53,10 @@ class Person:
             INSERT INTO persons (name)
             VALUES (?)
         """
-        CURSOR.execute(sql, (self.name))
+        CURSOR.execute(sql, (self.name,))
         CONN.commit()
-
         self.id = CURSOR.lastrowid
-        type(self).all[self.id] = self
+        # type(self).all[self.id] = self
 
 
     @classmethod
