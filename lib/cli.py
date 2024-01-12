@@ -48,7 +48,10 @@ def main():
 
 
 def menu():
+    print("")
+    print("")
     print("Please select an option:")
+    print("")
     print("0. Exit the program")
     print("1. Create person")
     print("2. Update person")

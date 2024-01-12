@@ -46,8 +46,8 @@ class Shoe:
         sql = """
             CREATE TABLE IF NOT EXISTS shoes (
             id INTEGER PRIMARY KEY,
-            brand TEXT
-            size INTEGER
+            brand TEXT,
+            size INTEGER,
             type TEXT)
         """
         CURSOR.execute(sql)
@@ -63,10 +63,13 @@ class Shoe:
 
     def save(self):
         sql = """
-            INSERT INTO shoes (name)
+            INSERT INTO shoes (
+                brand,
+                size,
+                type)
             VALUES (?)
         """
-        CURSOR.execute(sql, (self.name, ))
+        CURSOR.execute(sql, (self.brand, self.size, self.type))
         CONN.commit()
 
     def update(self):
