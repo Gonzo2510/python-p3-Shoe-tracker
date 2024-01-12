@@ -67,7 +67,7 @@ def menu():
     print("9. List shoes")
     print("10. List shoes by person id")
     print("11. Create/clear database")
-    print("11. Seed database")
+    print("12. Seed database")
 
 
 if __name__ == "__main__":
