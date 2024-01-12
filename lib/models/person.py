@@ -79,7 +79,7 @@ class Person:
             DELETE FROM persons
             WHERE id = ?
         """
-        CURSOR.execute(sql, (self.name, self.id))
+        CURSOR.execute(sql, (self.id,))
         CONN.commit()
     
         del type(self).all[self.id]
