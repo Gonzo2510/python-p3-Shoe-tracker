@@ -54,6 +54,7 @@ def find_person_by_id():
     print(person) if person else print(f'Person {id_} not found')
 
 def create_shoe():
+    print("")
     print(Shoe.shoe_brands)
     brand = input("Enter the shoe brand from above: ")
     size = input("Enter the shoe size: ")
