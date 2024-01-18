@@ -17,15 +17,15 @@ class Shoe:
     "Vans"
 ]
 
-    def __init__(self, brand, size, type, id=None):
+    def __init__(self, brand, size, person_id, id=None):
         self.id = id
         self.brand = brand
         self.size = size
-        self.type = type
+        self.person_id = person_id
 
     def __repr__(self) -> str:
         return(
-            f"Shoe {self.id}: {self.brand}, {self.type}"
+            f"Shoe {self.id}: {self.brand}, {self.person_id}"
         )
     
     @property
@@ -48,7 +48,8 @@ class Shoe:
             id INTEGER PRIMARY KEY,
             brand TEXT,
             size INTEGER,
-            type TEXT)
+            person_id INTEGER,
+            FOREIGN KEY (person_id) REFERENCES persons(id))
         """
         CURSOR.execute(sql)
         CONN.commit()
@@ -66,19 +67,19 @@ class Shoe:
             INSERT INTO shoes (
                 brand,
                 size,
-                type)
-            VALUES (?, ?, ?)
+                person_id)
+            VALUES (?, ?, ? )
         """
-        CURSOR.execute(sql, (self.brand, self.size, self.type))
+        CURSOR.execute(sql, (self.brand, self.size, self.person_id))
         CONN.commit()
 
     def update(self):
         sql = """
             UPDATE shoes
-            SET brand = ?, size = ?, type = ?
+            SET brand = ?, size = ?, person_id = ?
             WHERE id = ?
         """
-        CURSOR.execute(sql, (self.brand, self.size, self.type, self.id))
+        CURSOR.execute(sql, (self.brand, self.size, self.person_id, self.id))
         CONN.commit()
 
     def delete(self):
@@ -94,8 +95,8 @@ class Shoe:
 
 
     @classmethod
-    def create(cls, brand, size, type):
-        shoe = cls(brand, size, type)
+    def create(cls, brand, size, person_id):
+        shoe = cls(brand, size, person_id)
         shoe.save()
         return shoe
 
@@ -105,7 +106,7 @@ class Shoe:
         if shoe:
             shoe.brand = row[1]
             shoe.size = row[2]
-            shoe.type = row[3]
+            shoe.person_id = row[3]
         else:
             shoe = cls(row[1], row[2], row[3])
             shoe.id = row[0]
