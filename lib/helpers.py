@@ -16,7 +16,15 @@ def create_person():
     except Exception as exc:
         print("Error creating person: ", exc)
         
+def list_persons():
+    persons = Person.get_all()
+    for person in persons:
+        print(person) 
+
 def update_person():
+    print("")
+    list_persons()
+    print("")
     id_ = input("Enter the person's id: ")
     if person := Person.find_by_id(id_):
         try:
@@ -30,17 +38,15 @@ def update_person():
         print(f'Department {id_} not found')
 
 def delete_person():
+    print("")
+    list_persons()
+    print("")
     id_ = input("Enter the person's id: ")
     if person := Person.find_by_id(id_):
         person.delete()
         print(f'Person {id_} deleted')
     else:
         print(f'Person {id_} not found')
-
-def list_persons():
-    persons = Person.get_all()
-    for person in persons:
-        print(person) 
 
 def find_person_by_id():
     id_ = input("Enter the person's id: ")
@@ -59,7 +65,15 @@ def create_shoe():
     except Exception as exc:
         print("Error creating shoe: ", exc)
 
+def list_shoes():
+    shoes = Shoe.get_all()
+    for shoe in shoes:
+        print(shoe) 
+
 def update_shoe():
+    print("")
+    list_shoes()
+    print("")
     id_ = input("Enter the shoe's id: ")
     if shoe := Shoe.find_by_id(id_):
         try:
@@ -76,17 +90,15 @@ def update_shoe():
             print("Error updating shoe: ", exc)
 
 def delete_shoe():
+    print("")
+    list_shoes()
+    print("")
     id_ = input("Enter the shoe's id: ")
     if shoe := Shoe.find_by_id(id_):
         shoe.delete()
         print(f'Shoe {id_} deleted')
     else:
         print(f'Shoe {id_} not found')
-
-def list_shoes():
-    shoes = Shoe.get_all()
-    for shoe in shoes:
-        print(shoe) 
 
 def list_shoes_by_person_id():
     id_ = input("Enter the person's id: ")
