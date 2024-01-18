@@ -41,6 +41,14 @@ class Shoe:
                 f"Name must be one of the following: {Shoe.shoe_brands}"
             )
         
+    @property
+    def size(self):
+        return self._size
+    
+    @size.setter
+    def size(self, size):
+        self.size = int(size) 
+        
     @classmethod
     def create_table(cls):
         sql = """

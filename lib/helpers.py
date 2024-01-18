@@ -50,10 +50,10 @@ def find_person_by_id():
 def create_shoe():
     brand = input("Enter the shoe brand: ")
     size = input("Enter the shoe size: ")
-    type = input("Enter the shoe type: ")
+    person_id = input("Enter the shoe's person id: ")
     try:
         size = int(size)
-        shoe = Shoe.create(brand, size, type)
+        shoe = Shoe.create(brand, size, person_id)
         print(f'Success: {shoe}')
     except Exception as exc:
         print("Error creating shoe: ", exc)
@@ -66,8 +66,8 @@ def update_shoe():
             shoe.brand = brand
             size = input("Enter the shoe size: ")
             shoe.size = int(size)
-            type = input("Enter the shoe type: ")
-            shoe.type = type
+            person_id = input("Enter the shoe's person id: ")
+            shoe.type = person_id
 
             shoe.update()
             print(f'Success: {shoe}')
