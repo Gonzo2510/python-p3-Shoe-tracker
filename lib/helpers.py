@@ -87,6 +87,11 @@ def list_shoes():
     for shoe in shoes:
         print(shoe) 
 
+def list_shoes_by_person_id():
+    id_ = input("Enter the person's id: ")
+    person = Person.find_by_id(id_)
+    if person:
+        person_shoes = person
 
 def create_clear_database():
     Shoe.drop_table()

@@ -120,3 +120,16 @@ class Person:
 
         row = CURSOR.execute(sql, (id,)).fetchone()
         return cls.instance_from_db(row) if row else None
+    
+    def shoes(self):
+        from models.shoe import Shoe
+        sql = """
+            SELECT * FROM shoes
+            WHERE person_id = ?
+        """
+        CURSOR.execute(sql, (self.id),)
+    
+        rows = CURSOR.fetchall()
+        return[
+            Shoe.instance_from_db(row) for row in rows
+        ]
