@@ -11,6 +11,7 @@ from helpers import (
     update_shoe,
     delete_shoe,
     list_shoes,
+    list_shoes_by_person_id,
     create_clear_database,
     seed_database
 )
@@ -41,7 +42,7 @@ def main():
         elif choice == "9":
             list_shoes()
         elif choice == "10":
-            list_shoes()
+            list_shoes_by_person_id() 
         elif choice == "11":
             create_clear_database()
         elif choice == "12":
