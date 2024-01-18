@@ -35,7 +35,7 @@ class Shoe:
     @brand.setter
     def brand(self, brand):
         if brand.title() in Shoe.shoe_brands:
-            self._brand = brand
+            self._brand = brand.title()
         else:
             raise ValueError(
                 f"Name must be one of the following: {Shoe.shoe_brands}"
