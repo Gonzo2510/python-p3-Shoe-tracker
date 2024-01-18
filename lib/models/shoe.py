@@ -67,7 +67,7 @@ class Shoe:
                 brand,
                 size,
                 type)
-            VALUES (?)
+            VALUES (?, ?, ?)
         """
         CURSOR.execute(sql, (self.brand, self.size, self.type))
         CONN.commit()
