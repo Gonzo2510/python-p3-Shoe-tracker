@@ -41,7 +41,7 @@ def main():
         elif choice == "9":
             list_shoes()
         elif choice == "10":
-            pass
+            list_shoes()
         elif choice == "11":
             create_clear_database()
         elif choice == "12":
