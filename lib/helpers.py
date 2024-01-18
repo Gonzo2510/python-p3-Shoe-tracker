@@ -58,6 +58,9 @@ def create_shoe():
     print(Shoe.shoe_brands)
     brand = input("Enter the shoe brand from above: ")
     size = input("Enter the shoe size: ")
+    print("")
+    list_persons()
+    print("")
     person_id = input("Enter the shoe's person id: ")
     try:
         size = int(size)
