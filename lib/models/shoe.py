@@ -20,7 +20,7 @@ class Shoe:
     def __init__(self, brand, size, person_id, id=None):
         self.id = id
         self.brand = brand
-        self.size = size
+        self.size = int(size)
         self.person_id = person_id
 
     def __repr__(self) -> str:
@@ -39,15 +39,7 @@ class Shoe:
         else:
             raise ValueError(
                 f"Name must be one of the following: {Shoe.shoe_brands}"
-            )
-        
-    @property
-    def size(self):
-        return self._size
-    
-    @size.setter
-    def size(self, size):
-        self.size = int(size) 
+            ) 
         
     @classmethod
     def create_table(cls):
