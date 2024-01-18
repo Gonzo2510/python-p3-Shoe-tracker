@@ -25,7 +25,7 @@ class Shoe:
 
     def __repr__(self) -> str:
         return(
-            f"Shoe {self.id}: {self.brand}, {self.person_id}"
+            f"Shoe {self.id}: {self.brand}, {self.size}, {self.person_id}"
         )
     
     @property
