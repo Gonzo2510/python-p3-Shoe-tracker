@@ -30,7 +30,7 @@ def update_person():
         try:
             name = input("Enter person's new name: ")
             person.name = name
-            
+
             person.update()
             print(f'Success: {person}')
         except Exception as exc:
@@ -125,4 +125,15 @@ def seed_database():
     Person.create("Isabel")
     Person.create("Aaron")
     Person.create("Joe")
+
+    Shoe.create("Puma", 8, 2)
+    Shoe.create("Nike", 13, 1)
+    Shoe.create("Reebok", 12, 3)
+    Shoe.create("Adidas", 11, 4)
+    Shoe.create("Converse", 8, 2)
+    Shoe.create("Under Armor", 8, 2)
+    Shoe.create("Vans", 8, 2)
+    Shoe.create("Jordan", 8, 2)
+    Shoe.create("Nike", 8, 2)
+    
     print("Database seeded")
