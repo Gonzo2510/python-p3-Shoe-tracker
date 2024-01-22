@@ -131,9 +131,9 @@ def seed_database():
     Shoe.create("Reebok", 12, 3)
     Shoe.create("Adidas", 11, 4)
     Shoe.create("Converse", 8, 2)
-    Shoe.create("Under Armor", 8, 2)
+    Shoe.create("Under Armour", 8, 2)
     Shoe.create("Vans", 8, 2)
     Shoe.create("Jordan", 8, 2)
     Shoe.create("Nike", 8, 2)
-    
+
     print("Database seeded")
