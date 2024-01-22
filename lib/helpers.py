@@ -30,6 +30,7 @@ def update_person():
         try:
             name = input("Enter person's new name: ")
             person.name = name
+            
             person.update()
             print(f'Success: {person}')
         except Exception as exc:
