@@ -127,7 +127,7 @@ class Person:
             SELECT * FROM shoes
             WHERE person_id = ?
         """
-        CURSOR.execute(sql, (self.id),)
+        CURSOR.execute(sql, (self.id,),)
     
         rows = CURSOR.fetchall()
         return[
