@@ -106,8 +106,8 @@ def delete_shoe():
         print(f'Shoe {id_} not found')
 
 def list_shoes_by_person_id():
-    id_ = input("Enter the person's id: ")
-    person = Person.find_by_id(id_)
+    person_id = input("Enter the person's id: ")
+    person = Person.find_by_id(person_id)
     if person:
         person_shoes = person.shoes()
         for shoe in person_shoes:
