@@ -11,44 +11,12 @@ from helpers import (
     update_shoe,
     delete_shoe,
     list_shoes,
-    list_shoes_by_owner_id,
-    create_clear_database,
-    seed_database
+    list_shoes_by_owner_id
 )
 
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "e" or "E":
-            exit_program()
-        elif choice == "c" or "C":
-            create_owner()
-        elif choice == "2":
-            update_owner()
-        elif choice == "3":
-            delete_owner()
-        elif choice == "4":
-            list_owners()
-        elif choice == "5":
-            find_owner_by_id()
-        elif choice == "6":
-            create_shoe()
-        elif choice == "7":
-            update_shoe()
-        elif choice == "8":
-            delete_shoe()
-        elif choice == "9":
-            list_shoes()
-        elif choice == "10":
-            list_shoes_by_owner_id() 
-        elif choice == "00":
-            create_clear_database()
-        elif choice == "s" or "S":
-            seed_database()
-        else:
-            print("Invalid choice")
+
+
 
 
 def menu():
@@ -59,34 +27,46 @@ def menu():
     print("")
     print('----------------------')
     print("""
-        Type a symbol below to perfrom its action
+        Type a symbol below to perfrom an action
           
         #   Select that owner
-        c   Create new owner 
-        e   Exit program 
+        C   Create new owner 
+        E   Exit program
+        CD  Clear database
+        S   Seed database
+    """)
+
+    choice = input("> ").upper()
+
+    if choice == "E":
+        exit_program()
+    elif choice == "C":
+        create_owner()
+    elif choice.isdigit() and 1 <= int(choice) <= len(list_owners()):
+        owner_menu(choice)
+    else:
+        print("Invalid choice")
+
+
+def owner_menu(choice):
+    print('----------------------')
+    print(f'Owner {find_owner_by_id()}')
+    print("")
+
+    print("")
+    print('----------------------')
+    print("""
+        Type a symbol below to perfrom an action
+          
+        #   Select that owner
+        C   Create new owner 
+        E   Exit program
     """)
 
 
-
- 
-    # print("")
-    # print("")
-    # print("Please select an option:")
-    # print("")
-    # print("0. Exit the program")
-    # print("1. Create owner")
-    # print("2. Update owner")
-    # print("3. Delete owner")
-    # print("4. List owners")
-    # print("5. Find owner by id")
-    # print("6. Create shoe")
-    # print("7. Update shoe")
-    # print("8. Delete shoe")
-    # print("9. List shoes")
-    # print("10. List shoes by owner id")
-    # print("11. Create/clear database")
-    # print("12. Seed database")
-
+def main():
+    while True:
+        menu()
 
 if __name__ == "__main__":
     main()
