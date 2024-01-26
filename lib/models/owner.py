@@ -105,8 +105,12 @@ class Owner:
             SELECT *
             FROM owners
         """
-
-        rows = CURSOR.execute(sql).fetchall()
+        
+        try:
+            rows = CURSOR.execute(sql).fetchall()
+        except: 
+            Owner.create_table()
+            rows = CURSOR.execute(sql).fetchall()
 
         return[cls.instance_from_db(row) for row in rows]
     
