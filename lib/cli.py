@@ -21,9 +21,9 @@ def main():
     while True:
         menu()
         choice = input("> ")
-        if choice == "0":
+        if choice == "e" or "E":
             exit_program()
-        elif choice == "1":
+        elif choice == "c" or "C":
             create_person()
         elif choice == "2":
             update_person()
@@ -43,32 +43,49 @@ def main():
             list_shoes()
         elif choice == "10":
             list_shoes_by_person_id() 
-        elif choice == "11":
+        elif choice == "00":
             create_clear_database()
-        elif choice == "12":
+        elif choice == "s" or "S":
             seed_database()
         else:
             print("Invalid choice")
 
 
 def menu():
+    print('----------------------')
+    print("Current people")
     print("")
+    list_persons()
     print("")
-    print("Please select an option:")
-    print("")
-    print("0. Exit the program")
-    print("1. Create person")
-    print("2. Update person")
-    print("3. Delete person")
-    print("4. List persons")
-    print("5. Find person by id")
-    print("6. Create shoe")
-    print("7. Update shoe")
-    print("8. Delete shoe")
-    print("9. List shoes")
-    print("10. List shoes by person id")
-    print("11. Create/clear database")
-    print("12. Seed database")
+    print('----------------------')
+    print("""
+        Type a symbol below to perfrom its action
+          
+        #   Select that person
+        c   Create new person 
+        e   Exit program 
+    """)
+
+
+
+ 
+    # print("")
+    # print("")
+    # print("Please select an option:")
+    # print("")
+    # print("0. Exit the program")
+    # print("1. Create person")
+    # print("2. Update person")
+    # print("3. Delete person")
+    # print("4. List persons")
+    # print("5. Find person by id")
+    # print("6. Create shoe")
+    # print("7. Update shoe")
+    # print("8. Delete shoe")
+    # print("9. List shoes")
+    # print("10. List shoes by person id")
+    # print("11. Create/clear database")
+    # print("12. Seed database")
 
 
 if __name__ == "__main__":

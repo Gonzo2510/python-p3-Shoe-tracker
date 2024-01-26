@@ -9,7 +9,7 @@ class Person:
         self.name = name
 
     def __repr__(self) -> str:
-        return f"<Person {self.id}: {self.name}>"
+        return f"{self.id}: {self.name}"
     
     @property
     def name(self):
