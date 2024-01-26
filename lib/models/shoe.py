@@ -17,15 +17,15 @@ class Shoe:
     "Vans"
 ]
 
-    def __init__(self, brand, size, person_id, id=None):
+    def __init__(self, brand, size, owner_id, id=None):
         self.id = id
         self.brand = brand
         self.size = int(size)
-        self.person_id = person_id
+        self.owner_id = owner_id
 
     def __repr__(self) -> str:
         return(
-            f"Shoe {self.id}: {self.brand}, {self.size}, {self.person_id}"
+            f"Shoe {self.id}: {self.brand}, {self.size}, {self.owner_id}"
         )
     
     @property
@@ -48,8 +48,8 @@ class Shoe:
             id INTEGER PRIMARY KEY,
             brand TEXT,
             size INTEGER,
-            person_id INTEGER,
-            FOREIGN KEY (person_id) REFERENCES persons(id))
+            owner_id INTEGER,
+            FOREIGN KEY (owner_id) REFERENCES owners(id))
         """
         CURSOR.execute(sql)
         CONN.commit()
@@ -67,19 +67,19 @@ class Shoe:
             INSERT INTO shoes (
                 brand,
                 size,
-                person_id)
+                owner_id)
             VALUES (?, ?, ? )
         """
-        CURSOR.execute(sql, (self.brand, self.size, self.person_id))
+        CURSOR.execute(sql, (self.brand, self.size, self.owner_id))
         CONN.commit()
 
     def update(self):
         sql = """
             UPDATE shoes
-            SET brand = ?, size = ?, person_id = ?
+            SET brand = ?, size = ?, owner_id = ?
             WHERE id = ?
         """
-        CURSOR.execute(sql, (self.brand, self.size, self.person_id, self.id))
+        CURSOR.execute(sql, (self.brand, self.size, self.owner_id, self.id))
         CONN.commit()
 
     def delete(self):
@@ -95,8 +95,8 @@ class Shoe:
 
 
     @classmethod
-    def create(cls, brand, size, person_id):
-        shoe = cls(brand, size, person_id)
+    def create(cls, brand, size, owner_id):
+        shoe = cls(brand, size, owner_id)
         shoe.save()
         return shoe
 
@@ -106,7 +106,7 @@ class Shoe:
         if shoe:
             shoe.brand = row[1]
             shoe.size = row[2]
-            shoe.person_id = row[3]
+            shoe.owner_id = row[3]
         else:
             shoe = cls(row[1], row[2], row[3])
             shoe.id = row[0]

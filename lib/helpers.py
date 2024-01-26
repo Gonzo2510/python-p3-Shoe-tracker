@@ -1,4 +1,4 @@
-from models.person import Person
+from models.owner import Owner
 from models.shoe import Shoe
 
 # lib/helpers.py
@@ -8,51 +8,51 @@ def exit_program():
     print("Goodbye!")
     exit()
 
-def create_person():
-    name = input("Enter person name: ")
+def create_owner():
+    name = input("Enter owner name: ")
     try:
-        person = Person.create(name)
-        print(f'Success: {person}')
+        owner = Owner.create(name)
+        print(f'Success: {owner}')
     except Exception as exc:
-        print("Error creating person: ", exc)
+        print("Error creating owner: ", exc)
         
-def list_persons():
-    persons = Person.get_all()
-    for person in persons:
-        print(person) 
+def list_owners():
+    owners = Owner.get_all()
+    for owner in owners:
+        print(owner) 
 
-def update_person():
+def update_owner():
     print("")
-    list_persons()
+    list_owners()
     print("")
-    id_ = input("Enter the person's id: ")
-    if person := Person.find_by_id(id_):
+    id_ = input("Enter the owner's id: ")
+    if owner := Owner.find_by_id(id_):
         try:
-            name = input("Enter person's new name: ")
-            person.name = name
+            name = input("Enter owner's new name: ")
+            owner.name = name
 
-            person.update()
-            print(f'Success: {person}')
+            owner.update()
+            print(f'Success: {owner}')
         except Exception as exc:
             print("Error updating department: ", exc)
     else:
         print(f'Department {id_} not found')
 
-def delete_person():
+def delete_owner():
     print("")
-    list_persons()
+    list_owners()
     print("")
-    id_ = input("Enter the person's id: ")
-    if person := Person.find_by_id(id_):
-        person.delete()
-        print(f'Person {id_} deleted')
+    id_ = input("Enter the owner's id: ")
+    if owner := Owner.find_by_id(id_):
+        owner.delete()
+        print(f'Owner {id_} deleted')
     else:
-        print(f'Person {id_} not found')
+        print(f'Owner {id_} not found')
 
-def find_person_by_id():
-    id_ = input("Enter the person's id: ")
-    person = Person.find_by_id(id_)
-    print(person) if person else print(f'Person {id_} not found')
+def find_owner_by_id():
+    id_ = input("Enter the owner's id: ")
+    owner = Owner.find_by_id(id_)
+    print(owner) if owner else print(f'Owner {id_} not found')
 
 def create_shoe():
     print("")
@@ -60,12 +60,12 @@ def create_shoe():
     brand = input("Enter the shoe brand from above: ")
     size = input("Enter the shoe size: ")
     print("")
-    list_persons()
+    list_owners()
     print("")
-    person_id = input("Enter the shoe's person id: ")
+    owner_id = input("Enter the shoe's owner id: ")
     try:
         size = int(size)
-        shoe = Shoe.create(brand, size, person_id)
+        shoe = Shoe.create(brand, size, owner_id)
         print(f'Success: {shoe}')
     except Exception as exc:
         print("Error creating shoe: ", exc)
@@ -86,8 +86,8 @@ def update_shoe():
             shoe.brand = brand
             size = input("Enter the shoe size: ")
             shoe.size = int(size)
-            person_id = input("Enter the shoe's person id: ")
-            shoe.type = person_id
+            owner_id = input("Enter the shoe's owner id: ")
+            shoe.type = owner_id
 
             shoe.update()
             print(f'Success: {shoe}')
@@ -105,26 +105,26 @@ def delete_shoe():
     else:
         print(f'Shoe {id_} not found')
 
-def list_shoes_by_person_id():
-    person_id = input("Enter the person's id: ")
-    person = Person.find_by_id(person_id)
-    if person:
-        person_shoes = person.shoes()
-        for shoe in person_shoes:
+def list_shoes_by_owner_id():
+    owner_id = input("Enter the owner's id: ")
+    owner = Owner.find_by_id(owner_id)
+    if owner:
+        owner_shoes = owner.shoes()
+        for shoe in owner_shoes:
             print(shoe)
 
 def create_clear_database():
     Shoe.drop_table()
-    Person.drop_table()
-    Person.create_table()
+    Owner.drop_table()
+    Owner.create_table()
     Shoe.create_table()
     print("Database cleared")
 
 def seed_database():
-    Person.create("Jacob")
-    Person.create("Isabel")
-    Person.create("Aaron")
-    Person.create("Joe")
+    Owner.create("Jacob")
+    Owner.create("Isabel")
+    Owner.create("Aaron")
+    Owner.create("Joe")
 
     Shoe.create("Puma", 8, 2)
     Shoe.create("Nike", 13, 1)

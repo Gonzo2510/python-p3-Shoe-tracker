@@ -1,6 +1,6 @@
 from models.__init__ import CURSOR, CONN
 
-class Person:
+class Owner:
 
     all ={}
 
@@ -26,9 +26,9 @@ class Person:
         
     @classmethod
     def create_table(cls):
-        """ Create a new table to persist the attributes of Person instances """
+        """ Create a new table to persist the attributes of Owner instances """
         sql = """
-            CREATE TABLE IF NOT EXISTS persons (
+            CREATE TABLE IF NOT EXISTS owners (
             id INTEGER PRIMARY KEY,
             name TEXT)
         """
@@ -37,19 +37,19 @@ class Person:
 
     @classmethod
     def drop_table(cls):
-        """ Drop the table that persists Person instances """
+        """ Drop the table that persists Owner instances """
         sql = """
-            DROP TABLE IF EXISTS persons;
+            DROP TABLE IF EXISTS owners;
         """
         CURSOR.execute(sql)
         CONN.commit()
 
     def save(self):
-        """ Insert a new row with the name value of the current Person instance.
+        """ Insert a new row with the name value of the current Owner instance.
         Update object id attribute using the primary key value of new row.
         Save the object in local dictionary using table row's PK as dictionary key"""
         sql = """
-            INSERT INTO persons (name)
+            INSERT INTO owners (name)
             VALUES (?)
         """
         CURSOR.execute(sql, (self.name,))
@@ -60,13 +60,13 @@ class Person:
 
     @classmethod
     def create(cls, name):
-        person = cls(name)
-        person.save()
-        return person
+        owner = cls(name)
+        owner.save()
+        return owner
     
     def update(self):
         sql = """
-            UPDATE persons
+            UPDATE owners
             SET name = ?
             WHERE id = ?
         """
@@ -75,7 +75,7 @@ class Person:
 
     def delete(self):
         sql = """
-            DELETE FROM persons
+            DELETE FROM owners
             WHERE id = ?
         """
         CURSOR.execute(sql, (self.id,))
@@ -87,14 +87,14 @@ class Person:
 
     @classmethod
     def instance_from_db(cls, row):
-        person = cls.all.get(row[0])
-        if person:
-            person.name = row[1]
+        owner = cls.all.get(row[0])
+        if owner:
+            owner.name = row[1]
         else:
-            person = cls(row[1])
-            person.id = row[0]
-            cls.all[person.id] = person
-        return person
+            owner = cls(row[1])
+            owner.id = row[0]
+            cls.all[owner.id] = owner
+        return owner
 
     def get_all():
         pass
@@ -103,7 +103,7 @@ class Person:
     def get_all(cls):
         sql = """
             SELECT *
-            FROM persons
+            FROM owners
         """
 
         rows = CURSOR.execute(sql).fetchall()
@@ -114,7 +114,7 @@ class Person:
     def find_by_id(cls, id):
         sql = """
             SELECT *
-            FROM persons
+            FROM owners
             WHERE id = ?
         """
 
@@ -125,7 +125,7 @@ class Person:
         from models.shoe import Shoe
         sql = """
             SELECT * FROM shoes
-            WHERE person_id = ?
+            WHERE owner_id = ?
         """
         CURSOR.execute(sql, (self.id,),)
     

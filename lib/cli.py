@@ -2,16 +2,16 @@
 
 from helpers import (
     exit_program,
-    create_person,
-    update_person,
-    delete_person,
-    list_persons,
-    find_person_by_id,
+    create_owner,
+    update_owner,
+    delete_owner,
+    list_owners,
+    find_owner_by_id,
     create_shoe,
     update_shoe,
     delete_shoe,
     list_shoes,
-    list_shoes_by_person_id,
+    list_shoes_by_owner_id,
     create_clear_database,
     seed_database
 )
@@ -24,15 +24,15 @@ def main():
         if choice == "e" or "E":
             exit_program()
         elif choice == "c" or "C":
-            create_person()
+            create_owner()
         elif choice == "2":
-            update_person()
+            update_owner()
         elif choice == "3":
-            delete_person()
+            delete_owner()
         elif choice == "4":
-            list_persons()
+            list_owners()
         elif choice == "5":
-            find_person_by_id()
+            find_owner_by_id()
         elif choice == "6":
             create_shoe()
         elif choice == "7":
@@ -42,7 +42,7 @@ def main():
         elif choice == "9":
             list_shoes()
         elif choice == "10":
-            list_shoes_by_person_id() 
+            list_shoes_by_owner_id() 
         elif choice == "00":
             create_clear_database()
         elif choice == "s" or "S":
@@ -53,16 +53,16 @@ def main():
 
 def menu():
     print('----------------------')
-    print("Current people")
+    print("Current owners")
     print("")
-    list_persons()
+    list_owners()
     print("")
     print('----------------------')
     print("""
         Type a symbol below to perfrom its action
           
-        #   Select that person
-        c   Create new person 
+        #   Select that owner
+        c   Create new owner 
         e   Exit program 
     """)
 
@@ -74,16 +74,16 @@ def menu():
     # print("Please select an option:")
     # print("")
     # print("0. Exit the program")
-    # print("1. Create person")
-    # print("2. Update person")
-    # print("3. Delete person")
-    # print("4. List persons")
-    # print("5. Find person by id")
+    # print("1. Create owner")
+    # print("2. Update owner")
+    # print("3. Delete owner")
+    # print("4. List owners")
+    # print("5. Find owner by id")
     # print("6. Create shoe")
     # print("7. Update shoe")
     # print("8. Delete shoe")
     # print("9. List shoes")
-    # print("10. List shoes by person id")
+    # print("10. List shoes by owner id")
     # print("11. Create/clear database")
     # print("12. Seed database")
 
