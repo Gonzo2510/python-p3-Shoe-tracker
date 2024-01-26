@@ -17,42 +17,35 @@ def create_owner():
         print("Error creating owner: ", exc)
         
 def list_owners():
+    # return Owner.get_all()
     owners = Owner.get_all()
     for owner in owners:
         print(owner) 
 
-def update_owner():
-    print("")
-    list_owners()
-    print("")
-    id_ = input("Enter the owner's id: ")
+def update_owner(id_):
     if owner := Owner.find_by_id(id_):
         try:
             name = input("Enter owner's new name: ")
             owner.name = name
 
             owner.update()
-            print(f'Success: {owner}')
+            #print(f'Success: {owner}')
         except Exception as exc:
-            print("Error updating department: ", exc)
-    else:
-        print(f'Department {id_} not found')
-
-def delete_owner():
-    print("")
-    list_owners()
-    print("")
-    id_ = input("Enter the owner's id: ")
-    if owner := Owner.find_by_id(id_):
-        owner.delete()
-        print(f'Owner {id_} deleted')
+            print("Error updating owner: ", exc)
     else:
         print(f'Owner {id_} not found')
 
-def find_owner_by_id():
-    id_ = input("Enter the owner's id: ")
+def delete_owner(id_):
+    if owner := Owner.find_by_id(id_):
+        owner.delete()
+        #print(f'Owner {id_} deleted')
+    else:
+        print(f'Owner {id_} not found')
+
+
+def find_owner_by_id(id_):
     owner = Owner.find_by_id(id_)
-    print(owner) if owner else print(f'Owner {id_} not found')
+    return(owner) if owner else print(f'Owner {id_} not found')
 
 def create_shoe():
     print("")
