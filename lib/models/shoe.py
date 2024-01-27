@@ -25,7 +25,7 @@ class Shoe:
 
     def __repr__(self) -> str:
         return(
-            f"Shoe {self.id}: {self.brand}, {self.size}, {self.owner_id}"
+            f"{self.id}: {self.brand}, {self.size}"
         )
     
     @property
@@ -120,8 +120,11 @@ class Shoe:
             SELECT *
             FROM shoes
         """
-        rows = CURSOR.execute(sql).fetchall()
-
+        try:
+            rows = CURSOR.execute(sql).fetchall()
+        except:
+            Shoe.create_table()
+            rows = CURSOR.execute(sql).fetchall()
         return[cls.instance_from_db(row) for row in rows]
     
 
