@@ -15,53 +15,69 @@ from helpers import (
 )
 
 
-
-
-
-
 def menu():
     print('----------------------')
-    print("Current owners")
+    print("Current Owners: ")
     print("")
     list_owners()
     print("")
     print('----------------------')
     print("""
-        Type a symbol below to perfrom an action
+        Type a symbol below to perform an action
           
         #   Select that owner
         C   Create new owner 
         E   Exit program
-        CD  Clear database
-        S   Seed database
     """)
 
     choice = input("> ").upper()
-
+ 
     if choice == "E":
         exit_program()
     elif choice == "C":
         create_owner()
-    elif choice.isdigit() and 1 <= int(choice) <= len(list_owners()):
+    elif choice.isdigit():
         owner_menu(choice)
     else:
         print("Invalid choice")
 
 
-def owner_menu(choice):
-    print('----------------------')
-    print(f'Owner {find_owner_by_id()}')
-    print("")
-
-    print("")
-    print('----------------------')
-    print("""
-        Type a symbol below to perfrom an action
-          
-        #   Select that owner
-        C   Create new owner 
+def owner_menu(id):
+    while True:
+        owner = find_owner_by_id(id)
+        print('----------------------')
+        print(f'{owner.name}\'s shoes:')
+        print("")
+        print(list_shoes_by_owner_id(id))
+        print('----------------------')
+        print("""
+        Type a symbol below to perform an action
+        
+        U   Update owner's name
+        D   Delete owner
+        C   Create new shoe
+        DS  Delete a shoe
+        B   Back to main menu
         E   Exit program
-    """)
+        """)
+
+        choice = input("> ").upper()
+    
+        if choice == "E":
+            exit_program()
+        elif choice == "U":
+            update_owner(id)
+        elif choice == "D":
+            delete_owner(id)
+            break
+        elif choice == "C":
+            create_shoe(id)
+        elif choice == "DS":
+            delete_shoe()
+        elif choice == "B":
+            break
+        else:
+            print("Invalid choice")
 
 
 def main():

@@ -47,21 +47,29 @@ def find_owner_by_id(id_):
     owner = Owner.find_by_id(id_)
     return(owner) if owner else print(f'Owner {id_} not found')
 
-def create_shoe():
+def create_shoe(owner_id):
     print("")
-    print(Shoe.shoe_brands)
-    brand = input("Enter the shoe brand from above: ")
+    for shoe in Shoe.shoe_brands:
+        print(shoe)
+    print("")
+
+    brand = input("Enter a brand from above: ").title()
+    while brand not in Shoe.shoe_brands:
+        brand = input("Brand entered not in list above. Try again: ").title() 
+
     size = input("Enter the shoe size: ")
-    print("")
-    list_owners()
-    print("")
-    owner_id = input("Enter the shoe's owner id: ")
+    while size == type(str):
+        try:
+            int(size)
+        except:
+                size = input("Shoe size entered was not a number. Try again: ")
+    Shoe.get_all() #Creates the table if not yet created
     try:
-        size = int(size)
         shoe = Shoe.create(brand, size, owner_id)
-        print(f'Success: {shoe}')
+        # print(f'Success: {shoe}')
     except Exception as exc:
         print("Error creating shoe: ", exc)
+
 
 def list_shoes():
     shoes = Shoe.get_all()
@@ -88,9 +96,6 @@ def update_shoe():
             print("Error updating shoe: ", exc)
 
 def delete_shoe():
-    print("")
-    list_shoes()
-    print("")
     id_ = input("Enter the shoe's id: ")
     if shoe := Shoe.find_by_id(id_):
         shoe.delete()
@@ -98,10 +103,8 @@ def delete_shoe():
     else:
         print(f'Shoe {id_} not found')
 
-def list_shoes_by_owner_id():
-    owner_id = input("Enter the owner's id: ")
+def list_shoes_by_owner_id(owner_id):
     owner = Owner.find_by_id(owner_id)
     if owner:
-        owner_shoes = owner.shoes()
-        for shoe in owner_shoes:
-            print(shoe)
+        for shoe in owner.shoes():
+            print(f'{shoe.id}: {shoe.brand}, {shoe.size}')
