@@ -45,10 +45,12 @@ def menu():
 def owner_menu(id):
     while True:
         owner = find_owner_by_id(id)
+        shoes = list_shoes_by_owner_id(id)
         print('----------------------')
         print(f'{owner.name}\'s shoes:')
         print("")
-        print(list_shoes_by_owner_id(id))
+        for shoe in shoes:
+            print(f'{shoe.id}: {shoe.brand}, {shoe.size}')
         print('----------------------')
         print("""
         Type a symbol below to perform an action

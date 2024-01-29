@@ -106,5 +106,4 @@ def delete_shoe():
 def list_shoes_by_owner_id(owner_id):
     owner = Owner.find_by_id(owner_id)
     if owner:
-        for shoe in owner.shoes():
-            print(f'{shoe.id}: {shoe.brand}, {shoe.size}')
+        return owner.shoes()
