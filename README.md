@@ -1,23 +1,20 @@
-# Owner to Shoe CLI
 
-A brief description of what this project does and who it's for
-This CLI was created for any user who would like to keep track of owners who have specific pairs of shoes. The application is a simple command line interface with options to create/update/delete owners and shoes. Additinally you can also view the owners and shoes in your database file. 
+# Person to Shoe CLI
 
+This CLI was created for a user to keep track of owners and their shoes. The application is a simple command line interface. It lists the shoe owners in the database and displays them to the user. In the main menu, the user has the ability to create an owner, select an owner or exit the program. If the user selects and owner they will be taken to the owner menu with new options. They can update or delete the owner. They can create, update or delete a shoe under that owner, they can also go back to the main menu or exit the program. 
 ## Features
 
-- Create owner - Create a new owner
+- Main menu displays all of the owners. 
+- Select owner - Goes to the owner menu for that owner
+- Create owner - Creates a new owner
 - Update owner - Change an existing owners name
 - Delete owner - Delete an existing owner
-- List owners - View all owners in the database file
-- Find owner by id - find a owner by their id
 - Create shoe - Create a new shoe
 - Update shoe - Update an attribute(s) of an existing shoe
 - Delete shoe - Delete an existing shoe
-- List shoes - List all shoes in the database
-- List shoes by owner id - List all shoes of a specfic owners id
 ## Deployment
 
-To deploy this project run the program and create the database with choice 11. Choose any option of your choice after that and follow the prompts on screen. 
+To deploy this project run the program and start adding owners and shoes with the avaliable options on screen.
 
 
 ## Authors
@@ -31,10 +28,10 @@ cli.py - is the application file that has the list of options to choose from and
 
 __inin__.py initializes the database file
 
-owner.py contains the Owner class and its properties and functions
+person.py contains the Person class and its properties and functions
 
 shoe.py contains the Shoe class and its properties and functions
 
-data.db is the database file that will hold all of the information
+shoe_tracker.db is the database file that will store all of the shoe and owner data
 
 helpers.py holds the main functions stored in import in the cli file. 
