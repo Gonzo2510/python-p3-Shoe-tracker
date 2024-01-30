@@ -17,6 +17,7 @@ from helpers import (
 
 def menu():
     owners = list_owners()
+    shoes = list_shoes()
     print('----------------------')
     print("Current Owners: ")
     print("")
