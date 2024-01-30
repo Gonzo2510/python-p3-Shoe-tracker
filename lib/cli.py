@@ -11,15 +11,17 @@ from helpers import (
     update_shoe,
     delete_shoe,
     list_shoes,
-    list_shoes_by_owner_id
+    # list_shoes_by_owner_id
 )
 
 
 def menu():
+    owners = list_owners()
     print('----------------------')
     print("Current Owners: ")
     print("")
-    list_owners()
+    for i, owner in enumerate(owners, start=1):
+        print(f'{i}. {owner.name}')
     print("")
     print('----------------------')
     print("""
@@ -37,7 +39,8 @@ def menu():
     elif choice == "C":
         create_owner()
     elif choice.isdigit():
-        owner_menu(choice)
+        id_ = owners[int(choice)-1].id
+        owner_menu(id_)
     else:
         print("Invalid choice")
 
@@ -45,12 +48,18 @@ def menu():
 def owner_menu(id):
     while True:
         owner = find_owner_by_id(id)
-        shoes = list_shoes_by_owner_id(id)
+        shoes = owner.shoes()
         print('----------------------')
         print(f'{owner.name}\'s shoes:')
         print("")
-        for shoe in shoes:
-            print(f'{shoe.id}: {shoe.brand}, {shoe.size}')
+        if shoes:
+            for i, shoe in enumerate(shoes, start=1):
+                print(i, shoe.brand, shoe.size)
+        else:
+            print('')
+
+        # for shoe in shoes:
+        #     print(f'{shoe.id}: {shoe.brand}, {shoe.size}')
         print('----------------------')
         print("""
         Type a symbol below to perform an action
@@ -75,7 +84,7 @@ def owner_menu(id):
         elif choice == "C":
             create_shoe(id)
         elif choice == "DS":
-            delete_shoe()
+            delete_shoe(owner)
         elif choice == "B":
             break
         else:

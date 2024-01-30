@@ -17,11 +17,11 @@ def create_owner():
         print("Error creating owner: ", exc)
         
 def list_owners():
-    # return Owner.get_all()
-    owners = Owner.get_all()
-    Shoe.get_all() # Creates shoe table
-    for owner in owners:
-        print(owner) 
+    return Owner.get_all()
+    # owners = Owner.get_all()
+    # for owner in owners:
+    #     print(owner) 
+    # return Shoe.get_all() # Creates shoe table
 
 def update_owner(id_):
     if owner := Owner.find_by_id(id_):
@@ -88,16 +88,17 @@ def update_shoe():
             shoe.brand = brand
             size = input("Enter the shoe size: ")
             shoe.size = int(size)
-            owner_id = input("Enter the shoe's owner id: ")
-            shoe.type = owner_id
+            # owner_id = input("Enter the shoe's owner id: ")
+            # shoe.type = owner_id
 
             shoe.update()
             print(f'Success: {shoe}')
         except Exception as exc:
             print("Error updating shoe: ", exc)
 
-def delete_shoe():
-    id_ = input("Enter the shoe's id: ")
+def delete_shoe(owner):
+    shoe_number = input("Enter the shoe number: ")
+    id_ = owner.shoes()[int(shoe_number) -1].id
     if shoe := Shoe.find_by_id(id_):
         shoe.delete()
         print(f'Shoe {id_} deleted')
