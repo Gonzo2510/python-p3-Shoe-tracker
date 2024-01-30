@@ -19,6 +19,7 @@ def create_owner():
 def list_owners():
     # return Owner.get_all()
     owners = Owner.get_all()
+    Shoe.get_all() # Creates shoe table
     for owner in owners:
         print(owner) 
 

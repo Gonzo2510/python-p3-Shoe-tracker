@@ -96,8 +96,6 @@ class Owner:
             cls.all[owner.id] = owner
         return owner
 
-    def get_all():
-        pass
 
     @classmethod
     def get_all(cls):
