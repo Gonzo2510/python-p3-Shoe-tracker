@@ -56,10 +56,7 @@ def owner_menu(id):
             for i, shoe in enumerate(shoes, start=1):
                 print(i, shoe.brand, shoe.size)
         else:
-            print('')
-
-        # for shoe in shoes:
-        #     print(f'{shoe.id}: {shoe.brand}, {shoe.size}')
+            print('No owned shoes...')
         print('----------------------')
         print("""
         Type a symbol below to perform an action
@@ -67,6 +64,7 @@ def owner_menu(id):
         U   Update owner's name
         D   Delete owner
         C   Create new shoe
+        US  Update a shoe
         DS  Delete a shoe
         B   Back to main menu
         E   Exit program
@@ -83,6 +81,8 @@ def owner_menu(id):
             break
         elif choice == "C":
             create_shoe(id)
+        elif choice == "US":
+            update_shoe(owner)
         elif choice == "DS":
             delete_shoe(owner)
         elif choice == "B":

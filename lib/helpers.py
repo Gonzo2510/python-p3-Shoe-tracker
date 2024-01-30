@@ -77,22 +77,24 @@ def list_shoes():
     for shoe in shoes:
         print(shoe) 
 
-def update_shoe():
-    print("")
-    list_shoes()
-    print("")
-    id_ = input("Enter the shoe's id: ")
-    if shoe := Shoe.find_by_id(id_):
+def update_shoe(owner):
+    shoe_number = input("Enter the shoe's number: ")
+    shoe_id = owner.shoes()[int(shoe_number) -1].id
+    if shoe := Shoe.find_by_id(shoe_id):
         try:
-            brand = input("Enter the shoe brand: ")
-            shoe.brand = brand
-            size = input("Enter the shoe size: ")
+            print("")
+            for brand in Shoe.shoe_brands:
+                print(brand)
+            print("")
+            new_brand = input("Enter the new shoe brand: ")
+            shoe.brand = new_brand
+            size = input("Enter the new shoe size: ")
             shoe.size = int(size)
             # owner_id = input("Enter the shoe's owner id: ")
             # shoe.type = owner_id
 
             shoe.update()
-            print(f'Success: {shoe}')
+            # print(f'Success: {shoe}')
         except Exception as exc:
             print("Error updating shoe: ", exc)
 
